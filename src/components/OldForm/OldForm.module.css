@@ -1,0 +1,25 @@
+.form {
+  height: 50vh;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 1rem;
+}
+
+.textInput {
+  background-color: lightblue;
+  height: 1rem;
+  border-radius: 5%;
+}
+
+.hasError {
+  background-color: lightcoral;
+}
+
+.button:disabled,
+.button:disabled:hover,
+.button:disabled:active {
+  background-color: lightcoral;
+  cursor: not-allowed;
+}
