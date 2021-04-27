@@ -151,4 +151,8 @@ export const formConfig = {
     ...createFormFieldConfig('Depth(cm): ', 'depth', 'number', false),
     validationRules: null,
   },
+/*   image: {
+    ...createFormFieldConfig('Select an image: ', 'image', 'file', false),
+    validationRules: null,
+  }, */
 };

@@ -37,7 +37,6 @@ function useForm(formObj) {
     (event) => {
       const { name, value } = event.target;
       const inputObj = { ...form[name] };
-      console.log(inputObj.value);
       inputObj.value = value;
       // update input field's validity
       const isValidInput = isInputFieldValid(inputObj);
@@ -107,7 +106,21 @@ function useForm(formObj) {
     setForm({ ...form });
   }, [form]);
 
-  return { renderFormInputs, isFormValid, reset };
+  const getValuesFromForm = useCallback(() => {
+    let keys = Object.keys(form);
+    let values = [];
+    for (let key in form) {
+      values.push(form[key].value);
+    }
+    let keyValuePairs = {};
+    for (let i = 0; i < keys.length; i++) {
+      Object.assign(keyValuePairs, {[keys[i]]: values[i]})
+    }
+    
+    return keyValuePairs;
+  }, [form])
+
+  return { getValuesFromForm, renderFormInputs, isFormValid, reset };
 }
 
 export default useForm;

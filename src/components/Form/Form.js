@@ -1,22 +1,43 @@
-
-import { render } from '@testing-library/react';
 import React from 'react';
 import useForm from '../../hooks/useForm';
+import useHttp from '../../hooks/useHttp';
 import { formConfig } from '../../utils/formConfig';
 
-export default function SignupForm() {
-  const { renderFormInputs, isFormValid, reset } = useForm(formConfig);
+const Form = props => {
+  const { getValuesFromForm, renderFormInputs, isFormValid, reset } = useForm(formConfig);
+
+  const {
+    isLoading,
+    error,
+    sendRequest: postRequest,
+  } = useHttp();
+
+  const createNewItem = (item, data) => {
+    const generatedId = data.name;
+    const newItem = { id: generatedId, ...item };
+    props.addItemToList(newItem);
+  };
 
 
-  const formSubmissionHandler = (event) => {
+  const formSubmissionHandler = async (event) => {
     event.preventDefault();
+    const formObject = getValuesFromForm();
+    postRequest({
+      url:
+        'https://art-collection-ba95c-default-rtdb.europe-west1.firebasedatabase.app/artwork.json',
+      method: 'POST',
+      body: formObject,
+      headers: {
+      'Content-Type': 'application/json'
+      }
+    }, createNewItem.bind(null, formObject));
+    
     reset();
-  }
-
+  };
 
   return (
-    <form className="signupForm" onSubmit={formSubmissionHandler}>
-      <h1>Add new artwork</h1>
+    <form onSubmit={formSubmissionHandler}>
+      <h2>Add new artwork</h2>
       {renderFormInputs()}
       <p>* field is required</p>
       <button type="submit" disabled={!isFormValid()}>
@@ -24,4 +45,6 @@ export default function SignupForm() {
       </button>
     </form>
   );
-}
+};
+
+export default Form;
