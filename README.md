@@ -1,4 +1,6 @@
-# A HYPER ISLAND school project
+# ART COLLECTION
+
+**A HYPER ISLAND school project**
 
 Program: Front-end developer
 
