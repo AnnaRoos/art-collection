@@ -1,7 +1,10 @@
 import React from 'react';
+
 import useForm from '../../hooks/useForm';
 import useHttp from '../../hooks/useHttp';
 import { formConfig } from '../../utils/formConfig';
+
+import styles from './Form.module.css';
 
 const Form = props => {
   const { getValuesFromForm, renderFormInputs, isFormValid, reset } = useForm(formConfig);
@@ -36,7 +39,7 @@ const Form = props => {
   };
 
   return (
-    <form onSubmit={formSubmissionHandler}>
+    <form className={styles.form} onSubmit={formSubmissionHandler}>
       <h2>Add new artwork</h2>
       {renderFormInputs()}
       <p>* field is required</p>

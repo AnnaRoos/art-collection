@@ -14,7 +14,6 @@ function InputField(props) {
     value,
     list,
     options,
-    select,
     required
   } = props;
 
@@ -23,26 +22,11 @@ function InputField(props) {
     datalist = <datalist id={list}>{options}</datalist>;
   }
 
-  let selectlist;
-  if (select) {
-    selectlist = (
-      <select
-        onChange={handleChange}
-        onBlur={handleBlur}
-        id={name}
-        name={name}
-        multiple
-      >
-        {options}
-      </select>
-    );
-  }
 
 
   return (
     <div className="inputContainer">
       <label htmlFor={name}>{label}</label>
-      {!select ?
         <input
           type={type}
           id={name}
@@ -51,7 +35,7 @@ function InputField(props) {
           onChange={handleChange}
           onBlur={handleBlur}
           list={list}
-        /> : selectlist}
+        /> 
       {list ? datalist : null}
       {required ? '*' : null}
       {errorMessage && !isValid && (

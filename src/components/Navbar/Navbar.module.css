@@ -1,0 +1,29 @@
+.navbar {
+  background-color: lightseagreen;
+  justify-self: flex-end;
+  width: 30%;
+  height: 100%;
+}
+
+.navbar ul {
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar a:hover,
+.navbar a:active,
+.navbar a.active {
+  padding-bottom: 0.25rem;
+  border-bottom: 4px solid black;
+}

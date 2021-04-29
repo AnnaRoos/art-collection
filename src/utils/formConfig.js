@@ -14,7 +14,6 @@ function createFormFieldConfig(
   required = true,
   list = null,
   options = null,
-  select = false,
   defaultValue = ''
 ) {
   return {
@@ -34,7 +33,6 @@ function createFormFieldConfig(
           errorMessage={error}
           list={list}
           options={options}
-          select={select}
         />
       );
     },
@@ -66,7 +64,7 @@ const materialOptions = (
     <option value="Paper">Paper</option>
     <option value="Ceramics">Ceramics</option>
     <option value="Glass">Glass</option>
-    <option value="Glass">Plastic</option>
+    <option value="Plastic">Plastic</option>
     <option value="Textile">Textile</option>
     <option value="Metal">Metal</option>
     <option value="Wood">Wood</option>
@@ -130,12 +128,10 @@ export const formConfig = {
     ...createFormFieldConfig(
       'Material: ',
       'material',
-      'material',
+      'text',
       true,
-      null,
-      materialOptions,
-      true,
-      ''
+      'materials',
+      materialOptions
     ),
     validationRules: [requiredRule('Material')],
   },

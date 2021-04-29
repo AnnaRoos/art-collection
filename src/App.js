@@ -1,7 +1,8 @@
 import { Route, Switch } from 'react-router-dom';
 
+import Header from './components/Header/Header';
 import ManageCollection from './containers/ManageCollection/ManageCollection';
-/* import ViewCollection from './containers/ViewCollection/ViewCollection'; */
+import ViewCollection from './containers/ViewCollection/ViewCollection'; 
 
 import './App.css';
 
@@ -10,10 +11,14 @@ import './App.css';
 function App() {
   return (
     <>
-      <Switch>
-        <Route path="/" component={ManageCollection} />
-{/*         <Route path="/" exact component={ViewCollection} /> */}
-      </Switch>
+      <Header />
+      <main>
+        <Switch>
+          <Route path="/admin" component={ManageCollection} />
+          {/*         <Route path="/" component={FrontPage} /> */}
+<Route path="/gallery" exact component={ViewCollection} />
+        </Switch>
+      </main>
     </>
   );
 }
