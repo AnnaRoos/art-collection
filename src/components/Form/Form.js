@@ -42,7 +42,7 @@ const Form = props => {
     <form className={styles.form} onSubmit={formSubmissionHandler}>
       <h2>Add new artwork</h2>
       {renderFormInputs()}
-      <p>* field is required</p>
+      <p>* Field is required</p>
       <button type="submit" disabled={!isFormValid()}>
         Submit
       </button>

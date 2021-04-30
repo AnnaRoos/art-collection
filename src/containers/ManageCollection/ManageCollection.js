@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 
 import Form from '../../components/Form/Form';
+import UploadImageInput from '../../components/UploadImageInput/UploadImageInput';
 import Table from '../../components/Table/Table';
 
 import useHttp from '../../hooks/useHttp';
 
 import styles from './ManageCollection.module.css';
 
-const ManageCollection = () => {
+const ManageCollection = (props) => {
   const [list, setList] = useState([]);
 
   const {
@@ -41,6 +42,7 @@ const ManageCollection = () => {
   return (
     <div className={styles.container}>
       <Form addItemToList={addItemToList} />
+      <UploadImageInput/>
       <Table isLoading={listIsLoading} list={list} error={listError} />
     </div>
   );
