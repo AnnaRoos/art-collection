@@ -7,6 +7,7 @@ import Table from '../../components/Table/Table';
 import useHttp from '../../hooks/useHttp';
 
 import styles from './ManageCollection.module.css';
+import Header from '../../components/Header/Header';
 
 const ManageCollection = (props) => {
   const [list, setList] = useState([]);
@@ -41,6 +42,7 @@ const ManageCollection = (props) => {
 
   return (
     <div className={styles.container}>
+      <Header loggedIn={true}/>
       <Form addItemToList={addItemToList} />
       <UploadImageInput/>
       <Table isLoading={listIsLoading} list={list} error={listError} />
