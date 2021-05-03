@@ -1,6 +1,5 @@
 import { Route, Switch } from 'react-router-dom';
 
-import Header from './components/Header/Header';
 import FrontPage from './containers/FrontPage/FrontPage';
 import Login from './containers/Login/Login'; 
 import ManageCollection from './containers/ManageCollection/ManageCollection';

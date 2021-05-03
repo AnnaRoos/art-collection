@@ -20,10 +20,10 @@ const UploadImageInput = () => {
 
   const uploadImage = async (event) => {
     event.preventDefault();
-    console.log(image.name);
     const uploadTask = storageRef
       .child('images/' + image.name)
       .put(image, metadata);
+    
     // Listen for state changes, errors, and completion of the upload.
     uploadTask.on(
       firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
@@ -53,9 +53,6 @@ const UploadImageInput = () => {
           case 'storage/canceled':
             // User canceled the upload
             break;
-
-          // ...
-
           case 'storage/unknown':
             // Unknown error occurred, inspect error.serverResponse
             break;
