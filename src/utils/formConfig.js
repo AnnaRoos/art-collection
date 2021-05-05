@@ -149,6 +149,6 @@ export const formConfig = {
   },
 /*   image: {
     ...createFormFieldConfig('Select an image: ', 'image', 'file', false),
-    validationRules: null,
+    validationRules: validFileRule(file, 'image'),
   }, */
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 
 import firebase from 'firebase/app';
 import 'firebase/storage';
@@ -7,7 +7,7 @@ import styles from './UploadImageInput.module.css';
 
 const UploadImageInput = () => {
 
-  const [image, setImage] = useState();
+  const imageInput = useRef();
 
   const storage = firebase.storage();
   const storageRef = storage.ref();
@@ -21,11 +21,11 @@ const UploadImageInput = () => {
   const uploadImage = async (event) => {
     event.preventDefault();
     const uploadTask = storageRef
-      .child('images/' + image.name)
-      .put(image, metadata);
+      .child('images/' + imageInput.current.files[0].name)
+      .put(imageInput.current.files[0], metadata);
     
     // Listen for state changes, errors, and completion of the upload.
-    uploadTask.on(
+      uploadTask.on(
       firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
       (snapshot) => {
         // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
@@ -64,6 +64,7 @@ const UploadImageInput = () => {
         // Upload completed successfully, now we can get the download URL
         uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
           console.log('File available at', downloadURL);
+          imageInput.current.value = null;
         });
       }
     );
@@ -77,8 +78,8 @@ const UploadImageInput = () => {
           type="file"
           id="image"
           name="image"
-          accept="image/png, image/jpeg"
-          onChange={(event) => setImage(event.target.files[0])}
+          accept="image/*"
+          ref={imageInput}
         ></input>
         <button type="submit">Submit</button>
       </form>

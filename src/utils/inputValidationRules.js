@@ -54,3 +54,19 @@ export function passwordMatchRule() {
     (inputValue, formObj) => inputValue === formObj.password.value
   );
 }
+
+const imageTypes = [
+  'image/gif',
+  'image/jpeg',
+  'image/png',
+  'image/svg+xml',
+  'image/tiff',
+];
+
+export function validFileRule(file, type) {
+  let fileTypes;
+  if (type === 'image') {
+    fileTypes = imageTypes;
+  }
+  return fileTypes.includes(file.type);
+}

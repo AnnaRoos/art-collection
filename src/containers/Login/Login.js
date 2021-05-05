@@ -39,6 +39,7 @@ const SignInScreen = () => {
   if (!isSignedIn) {
     return (
       <div className={styles.container}>
+        <Header loggedIn={isSignedIn} />
         <p>Please sign-in:</p>
         <StyledFirebaseAuth
           uiConfig={uiConfig}
