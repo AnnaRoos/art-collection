@@ -9,7 +9,7 @@ import useHttp from '../../hooks/useHttp';
 import styles from './ManageCollection.module.css';
 import Header from '../../components/Header/Header';
 
-const ManageCollection = (props) => {
+const ManageCollection = () => {
   const [list, setList] = useState([]);
 
   const {
@@ -29,8 +29,7 @@ const ManageCollection = (props) => {
 
     getListRequest(
       {
-        url:
-          'https://art-collection-ba95c-default-rtdb.europe-west1.firebasedatabase.app/artwork.json',
+        url: 'https://art-collection-ba95c-default-rtdb.europe-west1.firebasedatabase.app/artwork.json',
       },
       transformList
     );
@@ -42,9 +41,9 @@ const ManageCollection = (props) => {
 
   return (
     <div className={styles.container}>
-      <Header loggedIn={true}/>
+      <Header loggedIn={true} />
       <Form addItemToList={addItemToList} />
-      <UploadImageInput/>
+      <UploadImageInput />
       <Table isLoading={listIsLoading} list={list} error={listError} />
     </div>
   );

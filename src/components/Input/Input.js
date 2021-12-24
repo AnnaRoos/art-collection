@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './Input.module.css';
 
-function InputField(props) {
+const InputField = (props) => {
   const {
     label,
     type,
@@ -14,7 +14,7 @@ function InputField(props) {
     value,
     list,
     options,
-    required
+    required,
   } = props;
 
   let datalist;
@@ -22,20 +22,18 @@ function InputField(props) {
     datalist = <datalist id={list}>{options}</datalist>;
   }
 
-
-
   return (
     <div className="inputContainer">
       <label htmlFor={name}>{label}</label>
-        <input
-          type={type}
-          id={name}
-          name={name}
-          value={value}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          list={list}
-        /> 
+      <input
+        type={type}
+        id={name}
+        name={name}
+        value={value}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        list={list}
+      />
       {list ? datalist : null}
       {required ? '*' : null}
       {errorMessage && !isValid && (
@@ -43,6 +41,6 @@ function InputField(props) {
       )}
     </div>
   );
-}
+};
 
 export default React.memo(InputField);

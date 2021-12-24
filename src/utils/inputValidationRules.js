@@ -6,13 +6,13 @@
  * @param {string} errorMessage - message to display
  * @param {function} validateFunc - validation function
  */
-function createValidationRule(ruleName, errorMessage, validateFunc) {
+const createValidationRule = (ruleName, errorMessage, validateFunc) => {
   return {
     name: ruleName,
     message: errorMessage,
     validate: validateFunc,
   };
-}
+};
 
 export const requiredRule = (inputName) => {
   return createValidationRule(
@@ -23,11 +23,12 @@ export const requiredRule = (inputName) => {
 };
 
 export const yearRule = (inputName) => {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
   return createValidationRule(
     'yearRule',
     `${inputName} must be a valid year and no more than ${currentYear}`,
-    (inputValue, formObj) => inputValue ? inputValue.length === 4 && inputValue <= currentYear : true
+    (inputValue, formObj) =>
+      inputValue ? inputValue.length === 4 && inputValue <= currentYear : true
   );
 };
 
@@ -39,21 +40,21 @@ export const minLengthRule = (inputName, minCharacters) => {
   );
 };
 
-export function maxLengthRule(inputName, maxCharacters) {
+export const maxLengthRule = (inputName, maxCharacters) => {
   return createValidationRule(
     'minLength',
     `${inputName} cannot contain more than ${maxCharacters} characters`,
     (inputValue, formObj) => inputValue.length <= maxCharacters
   );
-}
+};
 
-export function passwordMatchRule() {
+export const passwordMatchRule = () => {
   return createValidationRule(
     'passwordMatch',
     `passwords do not match`,
     (inputValue, formObj) => inputValue === formObj.password.value
   );
-}
+};
 
 const imageTypes = [
   'image/gif',
@@ -63,10 +64,10 @@ const imageTypes = [
   'image/tiff',
 ];
 
-export function validFileRule(file, type) {
+export const validFileRule = (file, type) => {
   let fileTypes;
   if (type === 'image') {
     fileTypes = imageTypes;
   }
   return fileTypes.includes(file.type);
-}
+};

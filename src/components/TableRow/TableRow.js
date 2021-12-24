@@ -1,21 +1,20 @@
 import React from 'react';
 
-const TableRow = props => {
-
+const TableRow = ({ item }) => {
   return (
     <tr>
-      <td>{props.item.title}</td>
-      <td>{props.item.artist}</td>
-      <td>{props.item.year}</td>
-      <td>{props.item.yearPurchased}</td>
-      <td>{props.item.price}</td>
-      <td>{props.item.type}</td>
-      <td>{props.item.material}</td>
-      <td>{props.item.height}</td>
-      <td>{props.item.width}</td>
-      <td>{props.item.depth}</td>
+      <td>{item.title}</td>
+      <td>{item.artist}</td>
+      <td>{item.year}</td>
+      <td>{item.yearPurchased}</td>
+      <td>{item.price}</td>
+      <td>{item.type}</td>
+      <td>{item.material}</td>
+      <td>{item.height}</td>
+      <td>{item.width}</td>
+      <td>{item.depth}</td>
     </tr>
   );
-}
+};
 
 export default TableRow;

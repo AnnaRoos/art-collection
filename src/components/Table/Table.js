@@ -4,10 +4,10 @@ import TableRow from '../TableRow/TableRow';
 
 import styles from './Table.module.css';
 
-const Table = (props) => {
+const Table = ({ list, error, isLoading }) => {
   let table = <p>No artwork added yet.</p>;
-  if (props.list.length > 0) {
-    const list = props.list.map((item) => {
+  if (list.length > 0) {
+    const newList = list.map((item) => {
       return <TableRow item={item} key={item.id} id={item.id}></TableRow>;
     });
 
@@ -27,19 +27,19 @@ const Table = (props) => {
             <th>Depth</th>
           </tr>
         </thead>
-        <tbody>{list}</tbody>
+        <tbody>{newList}</tbody>
       </table>
     );
   }
 
   let content = table;
 
-  if (props.error) {
-    content = <p>{props.error}</p>;
+  if (error) {
+    content = <p>{error}</p>;
   }
 
-  if (props.isLoading) {
-    content = <p>Loading...</p>
+  if (isLoading) {
+    content = <p>Loading...</p>;
   }
 
   return (

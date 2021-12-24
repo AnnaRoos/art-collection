@@ -1,9 +1,9 @@
 import { useState, useCallback } from 'react';
 
-function useForm(formObj) {
+const useForm = (formObj) => {
   const [form, setForm] = useState(formObj);
 
-  function renderFormInputs() {
+  const renderFormInputs = () => {
     return Object.values(form).map((inputObj) => {
       const { value, label, errorMessage, valid, renderInput } = inputObj;
       return renderInput(
@@ -15,7 +15,7 @@ function useForm(formObj) {
         label
       );
     });
-  }
+  };
 
   const isInputFieldValid = useCallback(
     (inputField) => {
@@ -27,7 +27,6 @@ function useForm(formObj) {
           }
         }
       }
-
       return true;
     },
     [form]
@@ -114,13 +113,13 @@ function useForm(formObj) {
     }
     let keyValuePairs = {};
     for (let i = 0; i < keys.length; i++) {
-      Object.assign(keyValuePairs, {[keys[i]]: values[i]})
+      Object.assign(keyValuePairs, { [keys[i]]: values[i] });
     }
-    
+
     return keyValuePairs;
-  }, [form])
+  }, [form]);
 
   return { getValuesFromForm, renderFormInputs, isFormValid, reset };
-}
+};
 
 export default useForm;

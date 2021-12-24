@@ -1,13 +1,9 @@
 import React from 'react';
 import Input from '../components/Input/Input';
 
-import {
-  requiredRule,
-  yearRule
-} from './inputValidationRules';
+import { requiredRule, yearRule } from './inputValidationRules';
 
-
-function createFormFieldConfig(
+const createFormFieldConfig = (
   label,
   name,
   type,
@@ -15,7 +11,7 @@ function createFormFieldConfig(
   list = null,
   options = null,
   defaultValue = ''
-) {
+) => {
   return {
     renderInput: (handleChange, handleBlur, value, isValid, error, key) => {
       return (
@@ -42,7 +38,7 @@ function createFormFieldConfig(
     errorMessage: '',
     touched: false,
   };
-}
+};
 
 const titleOptions = <option value="No title" />;
 const artistOptions = <option value="Unknown" />;
@@ -147,7 +143,7 @@ export const formConfig = {
     ...createFormFieldConfig('Depth(cm): ', 'depth', 'number', false),
     validationRules: null,
   },
-/*   image: {
+  /*   image: {
     ...createFormFieldConfig('Select an image: ', 'image', 'file', false),
     validationRules: validFileRule(file, 'image'),
   }, */

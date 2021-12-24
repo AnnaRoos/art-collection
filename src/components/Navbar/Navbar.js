@@ -3,14 +3,14 @@ import { NavLink } from 'react-router-dom';
 
 import styles from './Navbar.module.css';
 
-const Navbar = (props) => {
+const Navbar = ({ loggedIn }) => {
   let links = (
     <li>
       <NavLink to="/login">LOG IN</NavLink>
     </li>
   );
 
-  if (props.loggedIn) {
+  if (loggedIn) {
     links = (
       <>
         <li>
