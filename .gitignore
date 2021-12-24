@@ -24,8 +24,8 @@ yarn-error.log*
 
 ### Firebase ###
 .idea
-**/.firebaserc
-Firebase.js
+
+./Firebase.js
 
 ### Firebase Patch ###
 .runtimeconfig.json
